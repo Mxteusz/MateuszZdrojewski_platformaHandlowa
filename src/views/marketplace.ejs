@@ -1,0 +1,18 @@
+<h2>Marketplace</h2>
+<ul>
+    <% items.forEach(item => { %>
+    <li>
+        <%= item.name %> - <%= item.price %>$
+        <% if (currentUser) { %>
+            <form action="/marketplace/buy" method="POST" style="display:inline;">
+                <input type="hidden" name="itemId" value="<%= item.id %>" />
+                <button>Buy</button>
+            </form>
+        <% } else { %>
+            <a href="/login">Zaloguj się, aby kupić</a>
+        <% } %>
+    </li>
+<% }) %>
+</ul>
+
+

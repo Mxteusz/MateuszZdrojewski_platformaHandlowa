@@ -1,0 +1,15 @@
+<h2> <%= user.username %> </h2>
+<p> Balance: <%= user.balance %>$</p>
+
+<% if (currentUser && currentUser.id === user.id) { %>
+  <form action="/topup" method="POST" style="margin-bottom: 1rem;">
+    <button type="submit">Doładuj konto o 100$</button>
+  </form>
+<% } %>
+
+<h3>Your Games:</h3>
+<ul>
+    <% games.forEach(game => { %>
+    <li><%= game.name %> - <%= game.price %>$</li>
+<% }) %>
+</ul>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Market Gier</title>
+</head>
+<body>
+    <header>
+        <h1>Steam Mini Market</h1>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/marketplace">Marketplace</a> |
+            <a href="/trade">Handel</a> |
+            <% if (currentUser) { %>
+                <span>Witaj, <%= currentUser.username %></span> |
+                <a href="/users/<%= currentUser.id %>">Profil</a> |
+                <a href="/logout">Wyloguj</a>
+            <% } else { %>
+                <a href="/login">Login</a> |
+                <a href="/register">Register</a>
+            <% } %>
+        </nav>
+        <hr/>
+    </header>
+
+    <main>
+        <%- body %>
+    </main>
+
+    <footer>
+        <hr/>
+        <p>&copy; 2026 Steam Mini Market</p>
+    </footer>
+</body>
+</html>
