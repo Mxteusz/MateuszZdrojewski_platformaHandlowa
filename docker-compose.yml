@@ -1,0 +1,31 @@
+services:
+  app:
+    build: .
+    container_name: steam-market-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: notes_app
+      DB_PORT: 3306
+      SESSION_SECRET: secret123
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: steam-market-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: notes_app
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
